@@ -16,7 +16,14 @@ will return an array of `MovieDTO`.  `QuoteDTO` objects will be used for quote e
 
 ## Installation
 
-TBD
+* Maven
+  * Add the following dependency to your pom file
+```
+    <groupId>io.github.a-c-rodriguez</groupId>
+    <artifactId>anthony_rodriguez-SDK</artifactId>
+    <version>0.0.1</version>
+```
+
 
 ## Usage
 
