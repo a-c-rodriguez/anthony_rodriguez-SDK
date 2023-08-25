@@ -4,16 +4,16 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.anthonyrodriguez.TheOne.Api.dto.MovieDTO;
 import org.anthonyrodriguez.TheOne.Api.dto.QuoteDTO;
+import org.anthonyrodriguez.TheOne.Api.helpers.NameValueOperator;
 import org.anthonyrodriguez.TheOne.Api.helpers.Utilities;
 import org.apache.commons.logging.Log;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.protocol.HTTP;
 
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
@@ -93,7 +93,7 @@ public class TheOneClient {
      * @param params - optional list on name value pairs for query string
      * @return list of LOTR movies. null if no movies found.
      */
-    public MovieDTO[] listMovies(NameValuePair... params) {
+    public MovieDTO[] listMovies(NameValueOperator... params) {
         MovieDTO [] movies = null;
         try {
             HttpGet request = buildRequest(params, MOVIE_LIST_ENDPOINT);
@@ -125,7 +125,7 @@ public class TheOneClient {
      * @param params - optional list on name value pairs for query string
      * @return single movie matching movie id. null if no movie found
      */
-    public MovieDTO findMovie(String movieId, NameValuePair... params) {
+    public MovieDTO findMovie(String movieId, NameValueOperator... params) {
         MovieDTO movie = null;
         try {
             HttpGet request = buildRequest(params, MOVIE_ENDPOINT, movieId);
@@ -155,7 +155,7 @@ public class TheOneClient {
      * @param params - optional list on name value pairs for query string
      * @return list of all quotes from all movies. null if no quotes are found.
      */
-    public QuoteDTO[] listQuotes(NameValuePair... params) {
+    public QuoteDTO[] listQuotes(NameValueOperator... params) {
         QuoteDTO[] quotes = null;
         try {
             HttpGet request = buildRequest(params, QUOTE_LIST_ENDPOINT);
@@ -186,7 +186,7 @@ public class TheOneClient {
      * @param params - optional list on name value pairs for query string
      * @return list of all quotes for single matching movie. null if no quotes found.
      */
-    public QuoteDTO[] listMovieQuotes(String movieId, NameValuePair... params) {
+    public QuoteDTO[] listMovieQuotes(String movieId, NameValueOperator... params) {
         QuoteDTO[] movieQuotes = null;
         try {
             HttpGet request = buildRequest(params, MOVIE_QUOTES_ENDPOINT, movieId);
@@ -217,7 +217,7 @@ public class TheOneClient {
      * @param params - optional list on name value pairs for query string
      * @return single quote for matching quote id. null if no quote found.
      */
-    public QuoteDTO findQuote(String quoteId, NameValuePair... params) {
+    public QuoteDTO findQuote(String quoteId, NameValueOperator... params) {
         QuoteDTO quote = null;
         try {
             HttpGet request = buildRequest(params, QUOTE_ENDPOINT, quoteId);
@@ -239,13 +239,14 @@ public class TheOneClient {
         return quote;
     }
 
-    private HttpGet buildRequest(NameValuePair[] params, String endpoint, String... pathDirs) throws URISyntaxException {
+    private HttpGet buildRequest(NameValueOperator[] params, String endpoint, String... pathDirs) throws Exception {
         MessageFormat messageFormat = new MessageFormat(endpoint);
         String[] result = Utilities.concatWithArrayCopy(new String[]{this.baseUrl}, pathDirs);
         String format = messageFormat.format(result);
         HttpGet request = new HttpGet(format);
         if(null != params) {
-            URI uri = new URIBuilder(request.getURI()).addParameters(Arrays.stream(params).collect(Collectors.toList())).build();
+            String queryString = Utilities.buildQueryString(Arrays.stream(params).collect(Collectors.toList()), Utilities.QP_SEP_A, HTTP.DEF_CONTENT_CHARSET);
+            URI uri = new URIBuilder(request.getURI()).setCustomQuery(queryString).build();
             request.setURI(uri);
         }
         request.addHeader("Authorization", "Bearer "+this.apiKey);

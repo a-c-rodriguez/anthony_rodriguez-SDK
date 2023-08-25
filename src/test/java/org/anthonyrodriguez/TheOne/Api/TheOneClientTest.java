@@ -63,9 +63,9 @@ public class TheOneClientTest {
 
     @Test
     public void listMoviesWithMultiFilteringAndResults() {
-        MovieDTO[] movies = theOneClient.listMovies(new BasicNameValuePair("limit", "1"), new OperatorNameValuePair("academyAwardWins", "0", ">"));
+        MovieDTO[] movies = theOneClient.listMovies(new OperatorNameValuePair("limit", "3", "="), new OperatorNameValuePair("academyAwardWins", "0", ">"));
         Assert.assertNotNull(movies);
-        Assert.assertEquals(1, movies.length);
+        Assert.assertEquals(3, movies.length);
         System.out.println("\n\n List Movies With MultiFiltering:");
         for (MovieDTO movie : movies) {
             System.out.println(MessageFormat.format("\t{0}", movie.toString()));
@@ -94,7 +94,7 @@ public class TheOneClientTest {
 
     @Test
     public void listQuotesWithLimit() {
-        QuoteDTO[] quotes = theOneClient.listQuotes(new BasicNameValuePair("limit", "20"));
+        QuoteDTO[] quotes = theOneClient.listQuotes(new OperatorNameValuePair("limit", "20", "="));
         Assert.assertNotNull(quotes);
         Assert.assertEquals(20, quotes.length);
         System.out.println("\n\n List Quotes:");
@@ -125,13 +125,13 @@ public class TheOneClientTest {
 
     @Test
     public void listQuotesWithRegexFilteringAndNoResults() {
-        QuoteDTO[] quotes = theOneClient.listQuotes(new BasicNameValuePair("dialog", "/Rumplestilskin/i"));
+        QuoteDTO[] quotes = theOneClient.listQuotes(new OperatorNameValuePair("dialog", "/Rumplestilskin/i", "="));
         Assert.assertNull(quotes);
     }
 
     @Test
     public void listMovieQuotes() {
-        QuoteDTO[] quotes = theOneClient.listMovieQuotes(movieWithQuotesId, new BasicNameValuePair("limit", "20"));
+        QuoteDTO[] quotes = theOneClient.listMovieQuotes(movieWithQuotesId, new OperatorNameValuePair("limit", "20", "="));
         Assert.assertNotNull(quotes);
         System.out.println("\n\n List Movie Quotes:");
         for (QuoteDTO quote : quotes) {
@@ -141,13 +141,13 @@ public class TheOneClientTest {
 
     @Test
     public void listMovieQuotesWithNoQuotes() {
-        QuoteDTO[] quotes = theOneClient.listMovieQuotes(movieId, new BasicNameValuePair("limit", "20"));
+        QuoteDTO[] quotes = theOneClient.listMovieQuotes(movieId, new OperatorNameValuePair("limit", "20", "="));
         Assert.assertNull(quotes);
     }
 
     @Test
     public void findQuote() {
-        QuoteDTO quote = theOneClient.findQuote(quoteId, new BasicNameValuePair("limit", "20"));
+        QuoteDTO quote = theOneClient.findQuote(quoteId, new OperatorNameValuePair("limit", "20", "="));
         Assert.assertNotNull(quote);
         System.out.println("\n\n Find Quote:");
         System.out.println(MessageFormat.format("\t{0}", quote.toString()));
@@ -155,7 +155,7 @@ public class TheOneClientTest {
 
     @Test
     public void findNullQuote() {
-        QuoteDTO quote = theOneClient.findQuote("a", new BasicNameValuePair("limit", "20"));
+        QuoteDTO quote = theOneClient.findQuote("a", new OperatorNameValuePair("limit", "20", "="));
         Assert.assertNull(quote);
     }
 }
