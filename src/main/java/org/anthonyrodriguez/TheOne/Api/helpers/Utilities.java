@@ -1,7 +1,10 @@
-package org.anthonyrodriguez.helpers;
+package org.anthonyrodriguez.TheOne.Api.helpers;
 
 import java.util.Arrays;
 
+/**
+ * Helper class for static methods.
+ */
 public class Utilities {
 
     public static <T> T[] concatWithArrayCopy(T[] array1, T[] array2) {

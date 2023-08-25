@@ -1,4 +1,4 @@
-package org.anthonyrodriguez.helpers;
+package org.anthonyrodriguez.TheOne.Api.helpers;
 
 import org.apache.http.message.BasicNameValuePair;
 
@@ -9,11 +9,11 @@ import org.apache.http.message.BasicNameValuePair;
  * ">", "<", ">=", etc)
  */
 public class OperatorNameValuePair extends BasicNameValuePair {
-    private String operator = "=";
+    protected String operator = "=";
 
     public OperatorNameValuePair(String name, String value, String operator) {
         super(name, value);
-        if(null != operator && !operator.isEmpty()) {
+        if(null != operator) {
             this.operator = operator;
         }
     }
@@ -25,7 +25,7 @@ public class OperatorNameValuePair extends BasicNameValuePair {
         if (value == null) {
             return name;
         }
-        final int len = name.length() + 1 + value.length();
+        final int len = name.length() + operator.length() + value.length();
         final StringBuilder buffer = new StringBuilder(len);
         buffer.append(name);
         buffer.append(operator);
