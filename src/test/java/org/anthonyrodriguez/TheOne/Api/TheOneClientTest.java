@@ -32,6 +32,26 @@ public class TheOneClientTest {
     }
 
     @Test
+    public void invalidBaseUrl() {
+        try {
+            TheOneClient theOneClient1 = new TheOneClient(null, testApiKey, null);
+            Assert.fail("Argument exception not thrown for invalid base url.");
+        } catch (Exception e) {
+            Assert.assertEquals(IllegalArgumentException.class, e.getClass());
+        }
+    }
+
+    @Test
+    public void invalidApiKey() {
+        try {
+            TheOneClient theOneClient1 = new TheOneClient(theOneBaseUrl, null, null);
+            Assert.fail("Argument exception not thrown for invalid api key.");
+        } catch (Exception e) {
+            Assert.assertEquals(IllegalArgumentException.class, e.getClass());
+        }
+    }
+
+    @Test
     public void listMovies() {
         MovieDTO[] movies = theOneClient.listMovies();
         Assert.assertNotNull(movies);

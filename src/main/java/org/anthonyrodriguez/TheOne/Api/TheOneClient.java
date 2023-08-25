@@ -73,14 +73,14 @@ public class TheOneClient {
 
     public void setBaseUrl(String baseUrl) {
         if(null == baseUrl || baseUrl.isEmpty()) {
-            throw new IllegalArgumentException("Valid baseUrl is requried");
+            throw new IllegalArgumentException("Valid baseUrl is required");
         }
         this.baseUrl = baseUrl;
     }
 
     public void setApiKey(String apiKey) {
         if(null == apiKey || apiKey.isEmpty()) {
-            throw new IllegalArgumentException("Valid apiKey is requried");
+            throw new IllegalArgumentException("Valid apiKey is required");
         }
         this.apiKey = apiKey;
     }
