@@ -1,4 +1,4 @@
-package org.anthonyrodriguez.TheOne.Api.dto;
+package io.github.a_c_rodriguez.TheOne.Api.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

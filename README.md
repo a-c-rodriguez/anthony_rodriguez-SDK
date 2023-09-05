@@ -24,6 +24,11 @@ will return an array of `MovieDTO`.  `QuoteDTO` objects will be used for quote e
     <version>0.0.1</version>
 ```
 
+* Gradle
+  * Add the following dependency to your build.gradle file
+```
+    implementation 'io.github.a-c-rodriguez:anthony_rodriguez-SDK:0.0.1'
+```
 
 ## Usage
 

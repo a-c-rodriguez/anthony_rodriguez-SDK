@@ -1,4 +1,4 @@
-package org.anthonyrodriguez.TheOne.Api.helpers;
+package io.github.a_c_rodriguez.TheOne.Api.helpers;
 
 import org.apache.http.util.Args;
 
@@ -9,7 +9,7 @@ import java.nio.charset.Charset;
  * Extension of the BasicNameValuePair class that allows the user to
  * change the default operator "=" that separates the pair to any
  * operator that can be represented as a string with a URI (i.e.
- * ">", "<", ">=", etc)
+ * &quot;&gt;%quot; &quot;&lt;&quot;, &quot;&gt;=&quot;, etc)
  */
 public class OperatorNameValuePair implements NameValueOperator {
     private final String name;

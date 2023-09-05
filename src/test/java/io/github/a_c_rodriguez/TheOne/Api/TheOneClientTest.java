@@ -1,9 +1,9 @@
-package org.anthonyrodriguez.TheOne.Api;
+package io.github.a_c_rodriguez.TheOne.Api;
 
-import org.anthonyrodriguez.TheOne.Api.dto.MovieDTO;
-import org.anthonyrodriguez.TheOne.Api.dto.QuoteDTO;
-import org.anthonyrodriguez.TheOne.Api.helpers.OperatorNameMonad;
-import org.anthonyrodriguez.TheOne.Api.helpers.OperatorNameValuePair;
+import io.github.a_c_rodriguez.TheOne.Api.dto.MovieDTO;
+import io.github.a_c_rodriguez.TheOne.Api.dto.QuoteDTO;
+import io.github.a_c_rodriguez.TheOne.Api.helpers.OperatorNameMonad;
+import io.github.a_c_rodriguez.TheOne.Api.helpers.OperatorNameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.junit.After;
 import org.junit.Assert;

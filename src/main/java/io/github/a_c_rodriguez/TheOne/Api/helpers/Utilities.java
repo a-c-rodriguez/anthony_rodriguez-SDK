@@ -1,11 +1,9 @@
-package org.anthonyrodriguez.TheOne.Api.helpers;
+package io.github.a_c_rodriguez.TheOne.Api.helpers;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.util.Args;
-
-import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.util.Arrays;
+
+import org.apache.http.util.Args;
 
 /**
  * Helper class for static methods.

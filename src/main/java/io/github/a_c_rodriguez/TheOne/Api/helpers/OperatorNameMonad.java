@@ -1,4 +1,4 @@
-package org.anthonyrodriguez.TheOne.Api.helpers;
+package io.github.a_c_rodriguez.TheOne.Api.helpers;
 
 import java.net.URLEncoder;
 import java.nio.charset.Charset;

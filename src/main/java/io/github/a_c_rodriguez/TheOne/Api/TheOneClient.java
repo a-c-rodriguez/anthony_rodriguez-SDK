@@ -1,11 +1,11 @@
-package org.anthonyrodriguez.TheOne.Api;
+package io.github.a_c_rodriguez.TheOne.Api;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.anthonyrodriguez.TheOne.Api.dto.MovieDTO;
-import org.anthonyrodriguez.TheOne.Api.dto.QuoteDTO;
-import org.anthonyrodriguez.TheOne.Api.helpers.NameValueOperator;
-import org.anthonyrodriguez.TheOne.Api.helpers.Utilities;
+import io.github.a_c_rodriguez.TheOne.Api.dto.MovieDTO;
+import io.github.a_c_rodriguez.TheOne.Api.dto.QuoteDTO;
+import io.github.a_c_rodriguez.TheOne.Api.helpers.NameValueOperator;
+import io.github.a_c_rodriguez.TheOne.Api.helpers.Utilities;
 import org.apache.commons.logging.Log;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -35,7 +35,7 @@ import java.util.stream.Collectors;
  *  Full query string parameter support is also included in the client. List of query parameters
  *  can be found here: <a href="https://the-one-api.dev/documentation#5">https://the-one-api.dev/documentation#5</a>
  *
- * @implNote Most query parameters can be used safely with each other. The only query parameter that can only be used
+ * Note: Most query parameters can be used safely with each other. The only query parameter that can only be used
  * by itself is the regex parameter. Regex parameters make other parameters obsolete. This is an api implementation and
  * not the result of this sdk.
  */

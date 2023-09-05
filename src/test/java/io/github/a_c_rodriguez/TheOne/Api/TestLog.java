@@ -1,4 +1,4 @@
-package org.anthonyrodriguez.TheOne.Api;
+package io.github.a_c_rodriguez.TheOne.Api;
 
 import org.apache.commons.logging.Log;
 
